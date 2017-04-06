@@ -365,7 +365,7 @@ f(...) {
 ### Coding Tooling
 
 * lintr (Dylan will research)
-* use standard rprofile.site file
+* use standard rprofile.site file: https://github.com/alteryx/AP_Standards/blob/master/code/languages/r/Rprofile.ap.site.R
 
 ### Encoding
 
