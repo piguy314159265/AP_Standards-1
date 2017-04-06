@@ -1,3 +1,7 @@
+# The Rprofile.site file loads before the base packages load, so without the 
+# library(utils) call below, this script would not recognize the readRegistry()
+# call.
+library(utils)
 library(digest)
 library(RSQLite)
 library(Rmpfr)
@@ -5,8 +9,24 @@ library(Rmpfr)
 options(help_type="html")
 options(encoding="UTF-8")
 
-# Substitute your workstation's path here.
-glotPath_sc <- "C:/Program Files/Alteryx/bin/Messages/"
+alteryxUIRegistryValue_sc <- readRegistry("SOFTWARE\\Classes\\Alteryx Database\\Shell\\open\\Command")
+alteryxUIRegistryValue_sc <- gsub(
+  pattern = "\\",
+  replacement = "/",
+  x = alteryxUIRegistryValue_sc, 
+  fixed = TRUE
+)
+alteryxBinPath_sc <- substr(
+  x = alteryxUIRegistryValue_sc,
+  start = 2, 
+  stop = regexpr("AlteryxGui.exe", alteryxUIRegistryValue_sc) - 1
+)
+glotPath_sc <- paste0(
+  alteryxBinPath_sc,
+  "Messages/"
+)
+# glotPath_sc should be something like this:
+# "C:/Program Files/Alteryx/bin/Messages/"
 glotFile_sc <- "Glot.dat" 
 overrideFile_sc <- "override.txt"
 # You can put the word 'Arrows', 'English', 'French', or 'German' in 
@@ -45,7 +65,7 @@ ap_xmsg <- function(
       if(nullFound_sb) {
         # Don't wrap the following message string in XMSG()!
         stop.Alteryx(message.string = 
-                       "Non-null bind-variable value after null value passed to XMSG!"
+          "Non-null bind-variable value after null value passed to XMSG!"
         )
       }
     }
@@ -116,16 +136,17 @@ ap_xmsg <- function(
   ) # This will only include the non-null values.
   if(bindVariableCount_si > 0){
     bindVariable_vc <- enc2utf8(bindVariable_vc)
-    boundTranslatedString_sc <- sapply(
-      X = 1:bindVariableCount_si,
-      FUN = function(bindVariableIndex_si){
-        gsub(
-          pattern = paste0('@', bindVariableIndex_si),
-          replacement = bindVariable_vc[bindVariableIndex_si],
-          x = translatedString_sc
-        )
-      }
-    )
+    boundTranslatedString_sc <- translatedString_sc
+    for (bindVariableIndex_si in 1: bindVariableCount_si) {
+      boundTranslatedString_sc <- gsub(
+        # The below avoids substitutions into e.g. 'foo@12bar' where the
+        # entire number following the '@' sign is not in [1, 6].  This
+        # relies on regular-expression groups.
+        pattern = paste0('(@', bindVariableIndex_si, ')(\\D)'),
+        replacement = paste0(bindVariable_vc[bindVariableIndex_si], '\\2'),
+        x = boundTranslatedString_sc
+      )
+    }
   }
   else{
     boundTranslatedString_sc <- translatedString_sc
