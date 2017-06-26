@@ -8,6 +8,3 @@ In terms of style standards, prioritize in the following way:
 Favor readability over style matching
 
 ## Nomenclature
-
-### Reverse Hungarian Notation
-
