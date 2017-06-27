@@ -8,3 +8,14 @@ In terms of style standards, prioritize in the following way:
 Favor readability over style matching
 
 ## Nomenclature
+### Hungarian Notation
+If using hungarian notation or a variant thereof, use with an underscore to separate from the variable:
+```
+# OK
+my_name_sc
+ExceptionName_se
+
+# BAD
+my_nameSC
+scMyName
+```
