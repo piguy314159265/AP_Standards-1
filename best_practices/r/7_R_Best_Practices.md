@@ -7,7 +7,7 @@ There are many books on the topics of
 - functional programming best practices
 - R programming best practices
 
-It's not at all practical for us to cover any of those topics.
+It's not at all practical for us to cover any of those topics in any reasonable amount of depth.
 
 If I had one sentence to say regarding R programming generally that is especially helpful when moving between your IDE and Alteryx it would be
 
