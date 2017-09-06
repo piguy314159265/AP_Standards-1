@@ -1,44 +1,44 @@
 # 3. Packages
-### Packages for R code for R tools
-##### AlteryxPredictive
+## Packages for R code for R tools
+#### AlteryxPredictive
 [Github](https://github.com/alteryx/AlteryxPredictive)
 
 Some source code: `<Alteryx_install_directory>/R-x.y.z/library/AlteryxPredictive`
 
 This is the back end R code for the tools Linear Regression, Logistic Regression, Decision Tree.
-##### AlteryxSim
+#### AlteryxSim
 [Github](https://github.com/alteryx/AlteryxSim)
 
 Some source code: `<Alteryx_install_directory>/R-x.y.z/library/AlteryxSim`
 
 This is the back end R code for the Simulation tools.
 
-##### AlteryxPrescriptive
+#### AlteryxPrescriptive
 [Github](https://github.com/alteryx/AlteryxPrescriptive)
 
 Some source code: `<Alteryx_install_directory>/R-x.y.z/library/AlteryxPrescriptive`
 
 This is the back end R code for the Optimization tool.
 
-##### flightdeck
+#### flightdeck
 [Github](https://github.com/alteryx/flightdeck)
 
 Some source code: `<Alteryx_install_directory>/R-x.y.z/library/flightdeck`
 
 This is used in visualization for Linear Regression, Logistic Regression, and Decision Tree.
 
-##### AlteryxRViz
+#### AlteryxRViz
 Some source code: `<Alteryx_install_directory>/R-x.y.z/library/AlteryxRViz`
 
 A package to handle most of the interactive visualization for R tools in Alteryx. 
 
 This does not handle visualization for Linear Regression, Logistic Regression, or Decision Tree.
 
-### Packages for R Alteryx developers
-##### generateAlteryxRTests
+## Packages for R Alteryx developers
+#### generateAlteryxRTests
 A package to take a test for a macro and generate many more tests by changing parameters.
 
-##### jeeves and AlteryxRhelper
+#### jeeves and AlteryxRhelper
 [Github](https://github.com/alteryx/jeeves)
 
 [Github](https://github.com/AlteryxLabs/AlteryxRhelper)
@@ -52,8 +52,8 @@ The functionality includes:
 
 AlteryxRhelper is probably more of a help to customers whereas jeeves is more useful internally (a lot more depends on how the build works, etc.
 
-### Packages for data flow between R and Alteryx
-##### AlteryxRDataX
+## Packages for data flow between R and Alteryx
+#### AlteryxRDataX
 Some source code: `<Alteryx_install_directory>/R-x.y.z/library/AlteryxRDataX`
 
 A package for moving data from Alteryx and R. 
