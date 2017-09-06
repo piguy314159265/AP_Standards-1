@@ -1,6 +1,7 @@
 ## 2. R Installation
 
 > Where does the version of R that we install get installed?
+
 The R installation is in the root of the Alteryx install.
 
 Example:
